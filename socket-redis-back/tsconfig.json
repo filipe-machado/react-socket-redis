@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "allowJs": false,
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "isolatedModules": false,
+    "useUnknownInCatchVariables": false,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "inlineSourceMap": true,
+    "paths": {
+      "@services/*": [
+        "src/services/*"
+      ]
+    }
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "lib": [
+    "esnext"
+  ]
+}
