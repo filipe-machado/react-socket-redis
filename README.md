@@ -40,6 +40,12 @@ Execute o servidor do Redis `redis-server redis.conf` (levando em consideração
 ````
 $ redis-server react-socket-redis/redis.conf
 
+32753:C 17 Feb 2023 13:11:14.519 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32753:C 17 Feb 2023 13:11:14.519 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=32753, just started
+32753:C 17 Feb 2023 13:11:14.519 # Configuration loaded
+32753:M 17 Feb 2023 13:11:14.519 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32753:M 17 Feb 2023 13:11:14.519 * Node configuration loaded, I'm a16d49014b0ce0fa7ad681bd133995710b3869da
+
                 _._
            _.-``__ ''-._
       _.-``    `.  `_.  ''-._           Redis 6.0.16 (00000000/0) 64 bit
