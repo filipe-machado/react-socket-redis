@@ -67,9 +67,7 @@ const Chat = () => {
     });
 
     socket.on("users", (socketUsers: iUser["user"][]) => {
-      const clone = JSON.parse(
-        JSON.stringify(users, null, 2)
-      ) as iUser["user"][];
+      let clone = JSON.parse(JSON.stringify(users, null, 2)) as iUser["user"][];
 
       socketUsers.forEach((socketUser) => {
         socketUser.messages.forEach((message) => {
@@ -85,7 +83,7 @@ const Chat = () => {
 
         socketUser.self = socketUser.userID === socket.userID;
         initReactiveProperties(socketUser);
-        clone.push(socketUser);
+        clone = socketUsers;
       });
 
       // colocando usuário atual no início e ordenando os outros
