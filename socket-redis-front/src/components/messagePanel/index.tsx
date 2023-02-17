@@ -19,9 +19,7 @@ const MessagePanel = ({
       user.messages[index - 1].fromSelf !== user.messages[index].fromSelf
     );
   };
-  React.useEffect(() => {
-    console.log(user.messages);
-  });
+
   return (
     <div className={className}>
       <div className="header">

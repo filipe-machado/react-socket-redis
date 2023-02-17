@@ -40,8 +40,6 @@ const Chat = () => {
   };
 
   const initReactiveProperties = (user: iUser["user"]) => {
-    user.connected = true;
-    user.messages = [];
     user.hasNewMessages = false;
   };
 
@@ -68,14 +66,30 @@ const Chat = () => {
       setUsers(clone);
     });
 
-    socket.on("users", (socketUsers) => {
-      socketUsers.forEach((user: iUser["user"]) => {
-        user.self = user.userID === socket.id;
-        initReactiveProperties(user);
+    socket.on("users", (socketUsers: iUser["user"][]) => {
+      const clone = JSON.parse(
+        JSON.stringify(users, null, 2)
+      ) as iUser["user"][];
+
+      socketUsers.forEach((socketUser) => {
+        socketUser.messages.forEach((message) => {
+          message.fromSelf = message.from === socket.userID;
+        });
+        for (const user of clone) {
+          if (user.userID === socketUser.userID) {
+            user.connected = socketUser.connected;
+            user.messages = socketUser.messages;
+            continue;
+          }
+        }
+
+        socketUser.self = socketUser.userID === socket.userID;
+        initReactiveProperties(socketUser);
+        clone.push(socketUser);
       });
 
       // colocando usuário atual no início e ordenando os outros
-      const sorted = socketUsers.sort((a: iUser["user"], b: iUser["user"]) => {
+      const sorted = clone.sort((a, b) => {
         if (a.self) return -1;
         if (b.self) return 1;
         if (a.username < b.username) return -1;
@@ -84,9 +98,16 @@ const Chat = () => {
       setUsers(sorted);
     });
 
-    socket.on("user connected", (user) => {
-      initReactiveProperties(user);
-      setUsers([...users, user]);
+    socket.on("user connected", (socketUser) => {
+      const clone = JSON.parse(JSON.stringify(users, null, 2));
+      for (const user of clone) {
+        if (user.userID === socketUser.userID) {
+          user.connected = true;
+          continue;
+        }
+      }
+      initReactiveProperties(socketUser);
+      setUsers(clone);
     });
 
     socket.on("user disconnected", (id) => {
@@ -100,10 +121,11 @@ const Chat = () => {
       setUsers(clone);
     });
 
-    socket.on("private message", ({ content, from }) => {
+    socket.on("private message", ({ content, from, to }) => {
       const clone = JSON.parse(JSON.stringify(users, null, 2));
       for (const user of clone) {
-        if (user.userID === from) {
+        const fromSelf = socket.userID === from;
+        if (user.userID === (fromSelf ? to : from)) {
           user.messages.push({
             content,
             fromSelf: false,
@@ -116,9 +138,9 @@ const Chat = () => {
           break;
         }
       }
-
       setUsers(clone);
     });
+
     const cleanup = () => {
       socket.off("connect");
       socket.off("disconnect");

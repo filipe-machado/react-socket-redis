@@ -18,6 +18,18 @@ function App() {
   };
 
   React.useEffect(() => {
+    const sessionID = localStorage.getItem("sessionID");
+    if (sessionID) {
+      setUsernameAlreadySelected(true);
+      socket.auth = { sessionID };
+      socket.connect();
+    }
+    socket.on("session", ({ sessionID, userID }) => {
+      socket.auth = { sessionID };
+      localStorage.setItem("sessionID", sessionID);
+      socket.userID = userID;
+    });
+
     socket.on("connect_error", (err) => {
       if (err.message === "invalid username") {
         setUsernameAlreadySelected(false);
