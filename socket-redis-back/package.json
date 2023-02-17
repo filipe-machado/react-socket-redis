@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsup src",
     "clean": "rimraf ./dist",
-    "start": "tsx src/server.ts",
-    "start:dev": "tsx watch src/server.ts",
+    "start": "tsx src/cluster.ts",
+    "start:dev": "tsx watch src/cluster.ts",
     "test": "vitest",
     "test:cov": "vitest run --coverage"
   },
@@ -15,9 +15,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@socket.io/cluster-adapter": "^0.2.1",
+    "@socket.io/redis-adapter": "^8.1.0",
+    "@socket.io/sticky": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "socket.io": "^4.6.0"
+    "ioredis": "^5.3.1",
+    "socket.io": "^4.6.0",
+    "socket.io-adapter": "^2.5.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
