@@ -7,4 +7,8 @@ interface iSocket extends Socket {
 const URL = `${globals.protocol}://${globals.host}:${globals.port}`;
 const socket: iSocket = io(URL, { autoConnect: false });
 
+socket.onAny((event) => {
+  console.log(event);
+});
+
 export default socket;

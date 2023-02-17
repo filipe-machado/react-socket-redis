@@ -97,14 +97,19 @@ const Chat = () => {
     });
 
     socket.on("user connected", (socketUser) => {
-      const clone = JSON.parse(JSON.stringify(users, null, 2));
+      let clone = JSON.parse(JSON.stringify(users, null, 2));
+      let exists = false;
       for (const user of clone) {
         if (user.userID === socketUser.userID) {
+          exists = true;
           user.connected = true;
           continue;
         }
       }
       initReactiveProperties(socketUser);
+      if (!exists) {
+        clone = [...clone, socketUser];
+      }
       setUsers(clone);
     });
 
