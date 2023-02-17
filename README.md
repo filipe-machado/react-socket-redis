@@ -63,6 +63,7 @@ $ redis-server react-socket-redis/redis.conf
       `-._    `-.__.-'    _.-'
           `-._        _.-'
               `-.__.-'
+
 32753:M 17 Feb 2023 13:11:14.519 # Server initialized
 32753:M 17 Feb 2023 13:11:14.520 * Ready to accept connections
 ````
