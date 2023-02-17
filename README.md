@@ -38,7 +38,7 @@ App de chat com persistência de sessão e mensagens. O backend já está prepar
 Execute o servidor do Redis `redis-server redis.conf` (levando em consideração que o seu terminal está no diretório raiz do projeto).
 
 ````
-$ redis-server /home/filipe/Documentos/PROJECTS/TEST/react-socket-redis/redis.conf
+$ redis-server react-socket-redis/redis.conf
 
                 _._
            _.-``__ ''-._
