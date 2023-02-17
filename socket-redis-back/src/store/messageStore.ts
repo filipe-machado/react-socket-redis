@@ -1,4 +1,4 @@
-const CONVERSATION_TTL = 0.1 * 60 * 60;
+const CONVERSATION_TTL = 0.01 * 60 * 60;
 
 export interface iMessage {
   from: string;

@@ -4,9 +4,23 @@ import Redis from "ioredis";
 import { createAdapter } from "@socket.io/redis-adapter";
 import crypto from "crypto";
 
+const nodes = [
+  {
+    host: "localhost",
+    port: 7000,
+  },
+];
+
+// Redis em cluster
+// const redisClient = new Redis.Cluster(nodes);
+
 const redisClient = new Redis();
 const pubClient = redisClient;
 const subClient = pubClient.duplicate();
+
+pubClient.on("error", (err) => {
+  throw err;
+});
 
 const randomId = () => crypto.randomBytes(8).toString("hex");
 

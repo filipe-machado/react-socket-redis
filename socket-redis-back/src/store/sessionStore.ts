@@ -6,7 +6,7 @@ export interface iSession {
   messages?: iMessage[];
 }
 
-const SESSION_TTL = 24 * 60 * 60;
+const SESSION_TTL = 0.01 * 60 * 60;
 const mapSession = ([userID, username, connected]: any) =>
   userID ? { userID, username, connected: connected === "true" } : undefined;
 
