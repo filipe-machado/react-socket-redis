@@ -5,9 +5,8 @@ import { createAdapter } from "@socket.io/redis-adapter";
 import crypto from "crypto";
 
 const redisClient = new Redis();
-
 const pubClient = redisClient;
-const subClient = redisClient.duplicate();
+const subClient = pubClient.duplicate();
 
 const randomId = () => crypto.randomBytes(8).toString("hex");
 
@@ -76,6 +75,7 @@ const start = (server: any, adapter: any) => {
       messageStore.findMessagesForUser(socket.userID),
       sessionStore.findAllSessions(),
     ]);
+
     const messagesPerUser = new Map();
     messages.forEach((message: iMessage) => {
       const { from, to } = message;
@@ -118,8 +118,8 @@ const start = (server: any, adapter: any) => {
 
     // Notifica os usuários sobre a desconexão
     socket.on("disconnect", async () => {
-      const matchingSockets = await io.in(socket.userID).allSockets();
-      const isDisconnected = matchingSockets.size === 0;
+      const matchingSockets = await io.in(socket.userID).fetchSockets();
+      const isDisconnected = matchingSockets.length === 0;
       if (isDisconnected) {
         // Notifica outros usuários
         socket.broadcast.emit("user disconnected", socket.userID);

@@ -1,5 +1,4 @@
 import { iMessage } from "./messageStore";
-
 export interface iSession {
   userID: string;
   username: string;
@@ -12,7 +11,7 @@ const mapSession = ([userID, username, connected]: any) =>
   userID ? { userID, username, connected: connected === "true" } : undefined;
 
 class RedisSessionStore {
-  redisClient: any = null;
+  redisClient: any;
   constructor(redisClient: any) {
     this.redisClient = redisClient;
   }

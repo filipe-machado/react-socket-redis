@@ -1,4 +1,4 @@
-const CONVERSATION_TTL = 24 * 60 * 60;
+const CONVERSATION_TTL = 0.1 * 60 * 60;
 
 export interface iMessage {
   from: string;
@@ -7,7 +7,7 @@ export interface iMessage {
 }
 
 class RedisMessageStore {
-  redisClient: any = null;
+  redisClient: any;
   constructor(redisClient: any) {
     this.redisClient = redisClient;
   }
