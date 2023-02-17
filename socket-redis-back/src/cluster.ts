@@ -5,8 +5,7 @@ import { createAdapter, setupPrimary } from "@socket.io/cluster-adapter";
 import os from "os";
 import start from "./socket";
 
-// const NUM_CPUS = os.cpus().length;
-const NUM_CPUS = 4;
+const NUM_CPUS = os.cpus().length;
 
 if (cluster.isMaster || cluster.isPrimary) {
   console.log(`Master ${process.pid} is running`);
