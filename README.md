@@ -1,4 +1,4 @@
-# Socket-react-redis
+# React-Socket-Redis
 
 App de chat com persistência de sessão e mensagens. O backend já está preparado para balanceamento de carga.
 
