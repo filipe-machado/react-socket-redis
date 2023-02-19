@@ -14,14 +14,13 @@ App de chat com persistência de sessão e mensagens. O backend já está prepar
 
 ```
 /socket-react-redis/
-└── react-redis-front
-|   ├── package.json
+├── react-redis-front
 |   ├── pnpm-lock.json
 |   ├── ...
 |   └── src
 |       ├── main.tsx
 |       └── ...
-└── react-redis-back
+├── react-redis-back
 |   ├── package.json
 |   ├── pnpm-lock.json
 |   ├── ...
