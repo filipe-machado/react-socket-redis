@@ -7,7 +7,7 @@
     "build": "tsup src",
     "clean": "rimraf ./dist",
     "start": "tsx src/cluster.ts",
-    "start:dev": "tsx watch src/cluster.ts",
+    "dev": "tsx watch src/cluster.ts",
     "test": "vitest",
     "test:cov": "vitest run --coverage"
   },

@@ -92,11 +92,11 @@ Abra a pasta do back-end `cd socket-redis-back`, instale as dependências com `n
 
 ```bash
 # com npm
-npm run start:dev
+npm run dev
 # com yarn
-yarn start:dev
+yarn dev
 # com pnpm
-pnpm run start:dev
+pnpm run dev
 ```
 
 ### Redis em cluster
