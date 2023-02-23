@@ -1,13 +1,27 @@
+:not(.selected) {
+  background-color: #141414;
+}
+
 .selected {
-  background-color: #1164a3;
+  background-color: #1f1f1f;
 }
 
 .user {
   padding: 10px;
+  cursor: pointer;
 }
 
 .description {
   display: inline-block;
+  background: transparent;
+}
+
+.description .name {
+  background: inherit;
+}
+
+.description .status {
+  background: inherit;
 }
 
 .status {

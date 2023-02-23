@@ -1,29 +1,35 @@
-.header {
+.right-panel .header {
   line-height: 40px;
   padding: 10px 20px;
   border-bottom: 1px solid #dddddd;
+  background-color: inherit;
 }
 
-.messages {
+.right-panel .messages {
   margin: 0;
   padding: 20px;
+  background-color: inherit;
 }
 
-.message {
+.right-panel .message {
   list-style: none;
+  background-color: inherit;
 }
 
-.sender {
+.right-panel .sender {
   font-weight: bold;
   margin-top: 5px;
+  background-color: inherit;
 }
 
-.form {
+.right-panel .form {
   padding: 10px;
   position: absolute;
   bottom: 4px;
   width: -webkit-fill-available;
   display: inline-flex;
+  gap: 5px;
+  background-color: #292929;
 }
 
 .input {
@@ -37,6 +43,9 @@
 
 .send-button {
   vertical-align: top;
+  border-radius: 2px;
+  border: 1px solid #000;
+  cursor: pointer;
 }
 
 .left-panel {
@@ -46,10 +55,12 @@
   bottom: 0;
   width: 260px;
   overflow-x: hidden;
-  background-color: #3f0e40;
+  background-color: #141414;
   color: white;
 }
 
 .right-panel {
   margin-left: 260px;
+  height: 100vh;
+  background-color: #292929 !important;
 }
